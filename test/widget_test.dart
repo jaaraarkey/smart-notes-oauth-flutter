@@ -14,7 +14,8 @@ import 'package:smart_notes_oauth/models/auth_response.dart';
 
 void main() {
   group('SmartNotesApp Tests', () {
-    testWidgets('SmartNotesApp creates successfully', (WidgetTester tester) async {
+    testWidgets('SmartNotesApp creates successfully',
+        (WidgetTester tester) async {
       // Build our app and trigger a frame.
       await tester.pumpWidget(const SmartNotesApp());
 
