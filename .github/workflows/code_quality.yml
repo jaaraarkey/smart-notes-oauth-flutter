@@ -1,0 +1,49 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality:
+    name: 🔍 Code Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+      
+    - name: 📱 Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: 'stable'
+        
+    - name: 📦 Get dependencies
+      run: flutter pub get
+      
+    - name: 🎨 Check formatting
+      run: dart format --output=none --set-exit-if-changed .
+      
+    - name: 🔍 Analyze code
+      run: flutter analyze
+      
+    - name: 🔒 Check for security issues
+      run: flutter pub deps
+      
+    - name: 📊 Run tests with coverage
+      run: |
+        flutter test --coverage
+        
+    - name: 📈 Generate coverage report
+      run: |
+        sudo apt-get update
+        sudo apt-get install lcov
+        genhtml coverage/lcov.info -o coverage/html
+        
+    - name: 📤 Upload coverage reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverage-report
+        path: coverage/html
