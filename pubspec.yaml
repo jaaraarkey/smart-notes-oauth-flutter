@@ -1,0 +1,43 @@
+# title: "Flutter Project Dependencies"
+# filepath: /Users/hardcandy/rust_projects/flutter_smart_notes_oauth/pubspec.yaml
+name: smart_notes_oauth
+description: Smart Notes with Google OAuth
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Google OAuth
+  google_sign_in: ^6.1.5
+  
+  # HTTP requests to your Rust backend
+  http: ^1.1.0
+  
+  # Store JWT tokens securely
+  shared_preferences: ^2.2.2
+  
+  # JSON handling
+  json_annotation: ^4.8.1
+  
+  # State management (simple)
+  provider: ^6.1.1
+  
+  # UI components
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  json_serializable: ^6.7.1
+  build_runner: ^2.4.7
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
